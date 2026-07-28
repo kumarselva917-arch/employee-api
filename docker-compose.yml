@@ -1,0 +1,12 @@
+services:
+  employee-api:
+    build: .
+    container_name: employee-api
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - .env

@@ -1,0 +1,33 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: employee_db
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  employee-api:
+    build: .
+
+    container_name: employee-api
+
+    restart: always
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
