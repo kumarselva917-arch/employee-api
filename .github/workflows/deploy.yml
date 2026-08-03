@@ -1,0 +1,17 @@
+name: Employee API CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Success Message
+        run: echo "GitHub Actions is working successfully!"
